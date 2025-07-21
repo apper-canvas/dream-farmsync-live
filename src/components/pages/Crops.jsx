@@ -9,6 +9,7 @@ import CropList from "@/components/organisms/CropList";
 import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import Select from "@/components/atoms/Select";
+import Modal from "@/components/atoms/Modal";
 import Card from "@/components/atoms/Card";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
@@ -135,106 +136,94 @@ const Crops = () => {
         }
       />
       
-      <div className="p-6 space-y-8">
-        {/* Add/Edit Form */}
-        {showAddForm && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-8"
-          >
-            <Card>
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-display font-bold text-gray-900">
-                  {editingCrop ? "Edit Crop" : "Add New Crop"}
-                </h2>
-                <Button variant="ghost" onClick={resetForm}>
-                  <ApperIcon name="X" className="w-5 h-5" />
-                </Button>
-              </div>
+<div className="p-6 space-y-8">
+        {/* Add/Edit Crop Modal */}
+        <Modal 
+          isOpen={showAddForm}
+          onClose={resetForm}
+          title={editingCrop ? "Edit Crop" : "Add New Crop"}
+          size="xl"
+        >
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Select
+                label="Farm *"
+                name="farmId"
+                value={formData.farmId}
+                onChange={handleInputChange}
+              >
+                <option value="">Select a farm</option>
+                {farms.map(farm => (
+                  <option key={farm.Id} value={farm.Id}>
+                    {farm.name}
+                  </option>
+                ))}
+              </Select>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <Select
-                    label="Farm *"
-                    name="farmId"
-                    value={formData.farmId}
-                    onChange={handleInputChange}
-                  >
-                    <option value="">Select a farm</option>
-                    {farms.map(farm => (
-                      <option key={farm.Id} value={farm.Id}>
-                        {farm.name}
-                      </option>
-                    ))}
-                  </Select>
-                  
-                  <Input
-                    label="Crop Name *"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="e.g., Corn, Tomatoes, Wheat"
-                  />
-                  
-                  <Input
-                    label="Variety"
-                    name="variety"
-                    value={formData.variety}
-                    onChange={handleInputChange}
-                    placeholder="e.g., Sweet Corn, Heirloom"
-                  />
-                  
-                  <Input
-                    label="Planting Date *"
-                    name="plantingDate"
-                    type="date"
-                    value={formData.plantingDate}
-                    onChange={handleInputChange}
-                  />
-                  
-                  <Input
-                    label="Expected Harvest Date *"
-                    name="expectedHarvestDate"
-                    type="date"
-                    value={formData.expectedHarvestDate}
-                    onChange={handleInputChange}
-                  />
-                  
-                  <Input
-                    label="Field/Location"
-                    name="field"
-                    value={formData.field}
-                    onChange={handleInputChange}
-                    placeholder="e.g., North Field, Greenhouse 1"
-                  />
-                  
-                  <Select
-                    label="Status"
-                    name="status"
-                    value={formData.status}
-                    onChange={handleInputChange}
-                  >
-                    <option value="growing">Growing</option>
-                    <option value="ready">Ready for Harvest</option>
-                    <option value="harvested">Harvested</option>
-                    <option value="failed">Failed</option>
-                  </Select>
-                </div>
-                
-                <div className="flex items-center space-x-4">
-                  <Button type="submit">
-                    <ApperIcon name="Save" className="w-4 h-4 mr-2" />
-                    {editingCrop ? "Update Crop" : "Add Crop"}
-                  </Button>
-                  <Button variant="outline" type="button" onClick={resetForm}>
-                    Cancel
-                  </Button>
-                </div>
-              </form>
-            </Card>
-          </motion.div>
-        )}
+              <Input
+                label="Crop Name *"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                placeholder="e.g., Corn, Tomatoes, Wheat"
+              />
+              
+              <Input
+                label="Variety"
+                name="variety"
+                value={formData.variety}
+                onChange={handleInputChange}
+                placeholder="e.g., Sweet Corn, Heirloom"
+              />
+              
+              <Input
+                label="Planting Date *"
+                name="plantingDate"
+                type="date"
+                value={formData.plantingDate}
+                onChange={handleInputChange}
+              />
+              
+              <Input
+                label="Expected Harvest Date *"
+                name="expectedHarvestDate"
+                type="date"
+                value={formData.expectedHarvestDate}
+                onChange={handleInputChange}
+              />
+              
+              <Input
+                label="Field/Location"
+                name="field"
+                value={formData.field}
+                onChange={handleInputChange}
+                placeholder="e.g., North Field, Greenhouse 1"
+              />
+              
+              <Select
+                label="Status"
+                name="status"
+                value={formData.status}
+                onChange={handleInputChange}
+              >
+                <option value="growing">Growing</option>
+                <option value="ready">Ready for Harvest</option>
+                <option value="harvested">Harvested</option>
+                <option value="failed">Failed</option>
+              </Select>
+            </div>
+            
+            <div className="flex items-center space-x-4">
+              <Button type="submit">
+                <ApperIcon name="Save" className="w-4 h-4 mr-2" />
+                {editingCrop ? "Update Crop" : "Add Crop"}
+              </Button>
+              <Button variant="outline" type="button" onClick={resetForm}>
+                Cancel
+              </Button>
+            </div>
+          </form>
+        </Modal>
 
         {/* Crops List */}
         {crops.length === 0 ? (
