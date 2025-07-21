@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "farmId": 1,
+    "title": "Water corn crops",
+    "description": "Check irrigation system and water corn in North Field",
+    "dueDate": "2024-06-20T08:00:00.000Z",
+    "priority": "high",
+    "completed": false,
+    "category": "watering"
+  },
+  {
+    "Id": 2,
+    "farmId": 1,
+    "title": "Fertilize soybeans",
+    "description": "Apply nitrogen fertilizer to soybean crops",
+    "dueDate": "2024-06-22T10:00:00.000Z",
+    "priority": "medium",
+    "completed": false,
+    "category": "fertilizing"
+  },
+  {
+    "Id": 3,
+    "farmId": 2,
+    "title": "Harvest tomatoes",
+    "description": "Harvest ripe tomatoes from Greenhouse 1",
+    "dueDate": "2024-06-18T07:00:00.000Z",
+    "priority": "high",
+    "completed": true,
+    "category": "harvesting"
+  },
+  {
+    "Id": 4,
+    "farmId": 2,
+    "title": "Pest inspection",
+    "description": "Check lettuce crops for pest damage",
+    "dueDate": "2024-06-21T14:00:00.000Z",
+    "priority": "medium",
+    "completed": false,
+    "category": "monitoring"
+  },
+  {
+    "Id": 5,
+    "farmId": 3,
+    "title": "Equipment maintenance",
+    "description": "Service tractor and check harvester readiness",
+    "dueDate": "2024-06-25T09:00:00.000Z",
+    "priority": "high",
+    "completed": false,
+    "category": "maintenance"
+  },
+  {
+    "Id": 6,
+    "farmId": 1,
+    "title": "Soil testing",
+    "description": "Collect soil samples for nutrient analysis",
+    "dueDate": "2024-06-19T11:00:00.000Z",
+    "priority": "low",
+    "completed": false,
+    "category": "monitoring"
+  }
+]

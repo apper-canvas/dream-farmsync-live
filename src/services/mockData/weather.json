@@ -1,0 +1,45 @@
+{
+  "current": {
+    "temperature": 78,
+    "feelsLike": 82,
+    "humidity": 65,
+    "condition": "sunny"
+  },
+  "forecast": [
+    {
+      "day": "Today",
+      "high": 82,
+      "low": 62,
+      "condition": "sunny",
+      "precipitation": 0
+    },
+    {
+      "day": "Tomorrow",
+      "high": 79,
+      "low": 58,
+      "condition": "cloudy",
+      "precipitation": 10
+    },
+    {
+      "day": "Thu",
+      "high": 75,
+      "low": 55,
+      "condition": "rainy",
+      "precipitation": 80
+    },
+    {
+      "day": "Fri",
+      "high": 73,
+      "low": 54,
+      "condition": "rainy",
+      "precipitation": 60
+    },
+    {
+      "day": "Sat",
+      "high": 77,
+      "low": 59,
+      "condition": "cloudy",
+      "precipitation": 20
+    }
+  ]
+}

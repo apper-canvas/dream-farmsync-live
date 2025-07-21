@@ -1,0 +1,74 @@
+[
+  {
+    "Id": 1,
+    "farmId": 1,
+    "type": "expense",
+    "amount": 1200,
+    "category": "seeds",
+    "date": "2024-04-01T00:00:00.000Z",
+    "description": "Corn seeds for spring planting"
+  },
+  {
+    "Id": 2,
+    "farmId": 1,
+    "type": "expense",
+    "amount": 800,
+    "category": "fertilizer",
+    "date": "2024-04-15T00:00:00.000Z",
+    "description": "Nitrogen fertilizer for corn"
+  },
+  {
+    "Id": 3,
+    "farmId": 2,
+    "type": "income",
+    "amount": 2500,
+    "category": "sale",
+    "date": "2024-06-01T00:00:00.000Z",
+    "description": "Tomato harvest sale to local market"
+  },
+  {
+    "Id": 4,
+    "farmId": 2,
+    "type": "expense",
+    "amount": 350,
+    "category": "equipment",
+    "date": "2024-05-20T00:00:00.000Z",
+    "description": "New irrigation timer"
+  },
+  {
+    "Id": 5,
+    "farmId": 3,
+    "type": "expense",
+    "amount": 1500,
+    "category": "fuel",
+    "date": "2024-05-10T00:00:00.000Z",
+    "description": "Diesel fuel for tractors"
+  },
+  {
+    "Id": 6,
+    "farmId": 1,
+    "type": "expense",
+    "amount": 2200,
+    "category": "labor",
+    "date": "2024-05-25T00:00:00.000Z",
+    "description": "Seasonal workers for planting"
+  },
+  {
+    "Id": 7,
+    "farmId": 3,
+    "type": "income",
+    "amount": 15000,
+    "category": "harvest",
+    "date": "2024-06-15T00:00:00.000Z",
+    "description": "Wheat harvest pre-sale contract"
+  },
+  {
+    "Id": 8,
+    "farmId": 2,
+    "type": "expense",
+    "amount": 450,
+    "category": "maintenance",
+    "date": "2024-06-10T00:00:00.000Z",
+    "description": "Greenhouse heating system repair"
+  }
+]

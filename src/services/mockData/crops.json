@@ -1,0 +1,52 @@
+[
+  {
+    "Id": 1,
+    "farmId": 1,
+    "name": "Corn",
+    "variety": "Sweet Corn",
+    "plantingDate": "2024-04-15T00:00:00.000Z",
+    "expectedHarvestDate": "2024-08-15T00:00:00.000Z",
+    "field": "North Field",
+    "status": "growing"
+  },
+  {
+    "Id": 2,
+    "farmId": 1,
+    "name": "Soybeans",
+    "variety": "Non-GMO",
+    "plantingDate": "2024-05-01T00:00:00.000Z",
+    "expectedHarvestDate": "2024-09-15T00:00:00.000Z",
+    "field": "South Field",
+    "status": "growing"
+  },
+  {
+    "Id": 3,
+    "farmId": 2,
+    "name": "Tomatoes",
+    "variety": "Heirloom",
+    "plantingDate": "2024-03-20T00:00:00.000Z",
+    "expectedHarvestDate": "2024-07-01T00:00:00.000Z",
+    "field": "Greenhouse 1",
+    "status": "ready"
+  },
+  {
+    "Id": 4,
+    "farmId": 2,
+    "name": "Lettuce",
+    "variety": "Romaine",
+    "plantingDate": "2024-04-01T00:00:00.000Z",
+    "expectedHarvestDate": "2024-06-15T00:00:00.000Z",
+    "field": "Field A",
+    "status": "growing"
+  },
+  {
+    "Id": 5,
+    "farmId": 3,
+    "name": "Wheat",
+    "variety": "Winter Wheat",
+    "plantingDate": "2023-10-15T00:00:00.000Z",
+    "expectedHarvestDate": "2024-07-20T00:00:00.000Z",
+    "field": "East Pasture",
+    "status": "growing"
+  }
+]
