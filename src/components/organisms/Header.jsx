@@ -41,8 +41,8 @@ const Header = ({ title, subtitle, onMenuClick, showMenu = false, actions }) => 
         </div>
       </div>
     </motion.header>
+  );
 };
-
 const LogoutButton = () => {
   const { logout } = useContext(AuthContext);
   
