@@ -4,11 +4,16 @@ import Card from "@/components/atoms/Card";
 
 const StatCard = ({ title, value, icon, trend, trendValue, gradient = "from-primary-500 to-primary-600" }) => {
   return (
-    <Card className="relative overflow-hidden">
-      <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-5`}></div>
-      
-      <div className="relative">
-        <div className="flex items-center justify-between mb-2">
+    <motion.div
+      whileHover={{ scale: 1.02, y: -2 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ duration: 0.2, ease: "easeInOut" }}
+    >
+      <Card className="relative overflow-hidden">
+        <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-5`}></div>
+        
+        <div className="relative">
+          <div className="flex items-center justify-between mb-2">
           <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${gradient} flex items-center justify-center`}>
             <ApperIcon name={icon} className="w-5 h-5 text-white" />
           </div>
@@ -34,8 +39,9 @@ const StatCard = ({ title, value, icon, trend, trendValue, gradient = "from-prim
             {title}
           </div>
         </div>
-      </div>
-    </Card>
+</div>
+      </Card>
+    </motion.div>
   );
 };
 
