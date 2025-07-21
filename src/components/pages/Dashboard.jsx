@@ -161,9 +161,9 @@ const Dashboard = () => {
                     <p className="text-gray-600">All caught up! No pending tasks.</p>
                   </div>
                 ) : (
-                  upcomingTasks.map((task, index) => {
+upcomingTasks.map((task, index) => {
                     const isOverdue = isPast(new Date(task.dueDate)) && !isToday(new Date(task.dueDate));
-                    const isToday = isToday(new Date(task.dueDate));
+                    const isTodayTask = isToday(new Date(task.dueDate));
                     
                     return (
                       <motion.div
@@ -173,14 +173,14 @@ const Dashboard = () => {
                         transition={{ delay: index * 0.1 }}
                         className={`flex items-center justify-between p-4 rounded-lg border ${
                           isOverdue ? "border-red-200 bg-red-50" :
-                          isToday ? "border-yellow-200 bg-yellow-50" :
+                          isTodayTask ? "border-yellow-200 bg-yellow-50" :
                           "border-gray-200 bg-gray-50"
                         }`}
                       >
                         <div className="flex items-center space-x-3 flex-1">
                           <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
                             isOverdue ? "bg-red-100 text-red-600" :
-                            isToday ? "bg-yellow-100 text-yellow-600" :
+                            isTodayTask ? "bg-yellow-100 text-yellow-600" :
                             "bg-gray-100 text-gray-600"
                           }`}>
                             <ApperIcon 
