@@ -31,8 +31,10 @@ export const useFarms = () => {
 
   const updateFarm = async (id, farmData) => {
     try {
-      const updatedFarm = await farmService.update(id, farmData);
-      setFarms(prev => prev.map(farm => farm.Id === id ? updatedFarm : farm));
+const updatedFarm = await farmService.update(id, farmData);
+      if (updatedFarm) {
+        setFarms(prev => prev.map(farm => farm.Id === id ? updatedFarm : farm));
+      }
       return updatedFarm;
     } catch (err) {
       throw new Error(err.message || "Failed to update farm");

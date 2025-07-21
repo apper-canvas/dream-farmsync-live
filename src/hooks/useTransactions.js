@@ -31,10 +31,12 @@ export const useTransactions = () => {
 
   const updateTransaction = async (id, transactionData) => {
     try {
-      const updatedTransaction = await transactionService.update(id, transactionData);
-      setTransactions(prev => prev.map(transaction => 
+const updatedTransaction = await transactionService.update(id, transactionData);
+      if (updatedTransaction) {
+        setTransactions(prev => prev.map(transaction =>
         transaction.Id === id ? updatedTransaction : transaction
-      ));
+));
+      }
       return updatedTransaction;
     } catch (err) {
       throw new Error(err.message || "Failed to update transaction");

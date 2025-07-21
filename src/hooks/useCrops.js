@@ -31,8 +31,10 @@ export const useCrops = () => {
 
   const updateCrop = async (id, cropData) => {
     try {
-      const updatedCrop = await cropService.update(id, cropData);
-      setCrops(prev => prev.map(crop => crop.Id === id ? updatedCrop : crop));
+const updatedCrop = await cropService.update(id, cropData);
+      if (updatedCrop) {
+        setCrops(prev => prev.map(crop => crop.Id === id ? updatedCrop : crop));
+      }
       return updatedCrop;
     } catch (err) {
       throw new Error(err.message || "Failed to update crop");

@@ -31,8 +31,10 @@ export const useTasks = () => {
 
   const updateTask = async (id, taskData) => {
     try {
-      const updatedTask = await taskService.update(id, taskData);
-      setTasks(prev => prev.map(task => task.Id === id ? updatedTask : task));
+const updatedTask = await taskService.update(id, taskData);
+      if (updatedTask) {
+        setTasks(prev => prev.map(task => task.Id === id ? updatedTask : task));
+      }
       return updatedTask;
     } catch (err) {
       throw new Error(err.message || "Failed to update task");
@@ -41,8 +43,10 @@ export const useTasks = () => {
 
   const toggleTaskComplete = async (id) => {
     try {
-      const updatedTask = await taskService.toggleComplete(id);
-      setTasks(prev => prev.map(task => task.Id === id ? updatedTask : task));
+const updatedTask = await taskService.toggleComplete(id);
+      if (updatedTask) {
+        setTasks(prev => prev.map(task => task.Id === id ? updatedTask : task));
+      }
       return updatedTask;
     } catch (err) {
       throw new Error(err.message || "Failed to toggle task completion");
