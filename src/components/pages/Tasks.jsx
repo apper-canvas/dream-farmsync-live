@@ -10,6 +10,7 @@ import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import Select from "@/components/atoms/Select";
 import Card from "@/components/atoms/Card";
+import Modal from "@/components/atoms/Modal";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
@@ -154,109 +155,96 @@ const Tasks = () => {
         }
       />
       
-      <div className="p-6 space-y-8">
-        {/* Add/Edit Form */}
-        {showAddForm && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-8"
-          >
-            <Card>
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-display font-bold text-gray-900">
-                  {editingTask ? "Edit Task" : "Add New Task"}
-                </h2>
-                <Button variant="ghost" onClick={resetForm}>
-                  <ApperIcon name="X" className="w-5 h-5" />
-                </Button>
-              </div>
+<div className="p-6 space-y-8">
+        {/* Add/Edit Task Modal */}
+        <Modal
+          isOpen={showAddForm}
+          onClose={resetForm}
+          title={editingTask ? "Edit Task" : "Add New Task"}
+          size="lg"
+        >
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Select
+                label="Farm *"
+                name="farmId"
+                value={formData.farmId}
+                onChange={handleInputChange}
+              >
+                <option value="">Select a farm</option>
+                {farms.map(farm => (
+                  <option key={farm.Id} value={farm.Id}>
+                    {farm.name}
+                  </option>
+                ))}
+              </Select>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Select
-                    label="Farm *"
-                    name="farmId"
-                    value={formData.farmId}
-                    onChange={handleInputChange}
-                  >
-                    <option value="">Select a farm</option>
-                    {farms.map(farm => (
-                      <option key={farm.Id} value={farm.Id}>
-                        {farm.name}
-                      </option>
-                    ))}
-                  </Select>
-                  
-                  <Input
-                    label="Task Title *"
-                    name="title"
-                    value={formData.title}
-                    onChange={handleInputChange}
-                    placeholder="e.g., Water corn crops"
-                  />
-                  
-                  <Input
-                    label="Due Date *"
-                    name="dueDate"
-                    type="date"
-                    value={formData.dueDate}
-                    onChange={handleInputChange}
-                  />
-                  
-                  <Select
-                    label="Priority"
-                    name="priority"
-                    value={formData.priority}
-                    onChange={handleInputChange}
-                  >
-                    <option value="low">Low Priority</option>
-                    <option value="medium">Medium Priority</option>
-                    <option value="high">High Priority</option>
-                  </Select>
-                  
-                  <Select
-                    label="Category"
-                    name="category"
-                    value={formData.category}
-                    onChange={handleInputChange}
-                  >
-                    {taskCategories.map(category => (
-                      <option key={category.value} value={category.value}>
-                        {category.label}
-                      </option>
-                    ))}
-                  </Select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Description
-                  </label>
-                  <textarea
-                    name="description"
-                    value={formData.description}
-                    onChange={handleInputChange}
-                    rows={3}
-                    className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm placeholder:text-gray-500 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-200 transition-colors duration-200"
-                    placeholder="Add any additional details about this task..."
-                  />
-                </div>
-                
-                <div className="flex items-center space-x-4">
-                  <Button type="submit">
-                    <ApperIcon name="Save" className="w-4 h-4 mr-2" />
-                    {editingTask ? "Update Task" : "Add Task"}
-                  </Button>
-                  <Button variant="outline" type="button" onClick={resetForm}>
-                    Cancel
-                  </Button>
-                </div>
-              </form>
-            </Card>
-          </motion.div>
-        )}
-
+              <Input
+                label="Task Title *"
+                name="title"
+                value={formData.title}
+                onChange={handleInputChange}
+                placeholder="e.g., Water corn crops"
+              />
+              
+              <Input
+                label="Due Date *"
+                name="dueDate"
+                type="date"
+                value={formData.dueDate}
+                onChange={handleInputChange}
+              />
+              
+              <Select
+                label="Priority"
+                name="priority"
+                value={formData.priority}
+                onChange={handleInputChange}
+              >
+                <option value="low">Low Priority</option>
+                <option value="medium">Medium Priority</option>
+                <option value="high">High Priority</option>
+              </Select>
+              
+              <Select
+                label="Category"
+                name="category"
+                value={formData.category}
+                onChange={handleInputChange}
+              >
+                {taskCategories.map(category => (
+                  <option key={category.value} value={category.value}>
+                    {category.label}
+                  </option>
+                ))}
+              </Select>
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Description
+              </label>
+              <textarea
+                name="description"
+                value={formData.description}
+                onChange={handleInputChange}
+                rows={3}
+                className="w-full rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm placeholder:text-gray-500 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-200 transition-colors duration-200"
+                placeholder="Add any additional details about this task..."
+              />
+            </div>
+            
+            <div className="flex items-center space-x-4">
+              <Button type="submit">
+                <ApperIcon name="Save" className="w-4 h-4 mr-2" />
+                {editingTask ? "Update Task" : "Add Task"}
+              </Button>
+              <Button variant="outline" type="button" onClick={resetForm}>
+                Cancel
+              </Button>
+            </div>
+          </form>
+        </Modal>
         {/* Tasks Board */}
         {tasks.length === 0 ? (
           <Empty
