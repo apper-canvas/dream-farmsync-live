@@ -78,8 +78,8 @@ const Dashboard = () => {
     return farm ? farm.name : "Unknown Farm";
   };
 
-  const getTaskPriorityIcon = (priority) => {
-    switch (priority.toLowerCase()) {
+const getTaskPriorityIcon = (priority) => {
+    switch ((priority?.toLowerCase() ?? '')) {
       case "high": return "AlertCircle";
       case "medium": return "Clock";
       case "low": return "CheckCircle";
@@ -87,8 +87,8 @@ const Dashboard = () => {
     }
   };
 
-  const getTaskPriorityColor = (priority) => {
-    switch (priority.toLowerCase()) {
+const getTaskPriorityColor = (priority) => {
+    switch ((priority?.toLowerCase() ?? '')) {
       case "high": return "text-red-600";
       case "medium": return "text-yellow-600";
       case "low": return "text-green-600";
